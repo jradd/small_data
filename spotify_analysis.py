@@ -66,13 +66,8 @@ if __name__ == '__main__':
   artist, title = sys.argv[1], sys.argv[2]
   uri = get_id(artist, title)
   analysis = get_analysis(uri)
-  filename = title + '_' + artist + '.json'
+  filename = artist + '_' + title + '.json'
   with open(filename, 'wb+') as f:
     f.write(json.dumps(analysis))
     data_read = f.read()
     f.close()
-  
-  myValues = ExtractValues(analysis, 'sections')
-  arr = myValues.res
-  print(arr)
-  
