@@ -1,3 +1,4 @@
+from __future__ import print_function
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import sys, os
