@@ -32,16 +32,30 @@ def get_id(title, artist):
       return feats
   return features
 
+def get_ids(search_artist):
+  s = sp.search(search_artist)
+  out=[]
+  for i in s['tracks']['items']:
+    if i['artists'][0]['name'] == search_artist:
+      uri=i['uri']
+      print(f"uri: {uri}")
+    uri=i['uri']
+    out.append(uri)
+  return out
 
-title, artist = sys.argv[1], sys.argv[2]
-uri = get_id(title, artist)
+
+#title, artist = sys.argv[1], sys.argv[2]
+#uri = get_id(title, artist)
+search_artist = sys.argv[1]
+uri=get_ids(search_artist)
+print(uri)
 features = sp.audio_features(uri)
-filename = artist + '_' + title + '.features'
+filename = search_artist + ".json"
+#filename = artist + '_' + title + '.features'
 with open(filename, 'w+') as f:
   data = f.write(json.dumps(features, indent=4))
   data_read = f.read()
   f.close()
-print(f'{title} - {artist} - {uri}')
 feats = ('energy', 'valence', 'speechiness', 'danceability', 'key', 'loudness', 'mode', 'acousticness', 'instrumentalness', 'liveness', 'tempo', 'duration_ms', 'time_signature')
 for i in features:
   energy =  i['energy']
@@ -59,3 +73,4 @@ for i in features:
   time_signature = i['time_signature']
   for feat in feats:
     print(f'{feat}',i[feat])
+
