@@ -8,14 +8,14 @@ import json
 client_id = os.environ['CLIENT_ID']
 client_secret = os.environ['CLIENT_SECRET']
 redirect_uri = os.environ['REDIRECT_URI']
-uri = 'spotify:track:3j1fOrxmfuym91Cf9v397b'
+#uri = 'spotify:track:3j1fOrxmfuym91Cf9v397b'
 
 
-title = sys.argv[1]
-artist = sys.argv[2]
+#title = sys.argv[1]
+#artist = sys.argv[2]
 client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-sp.trace=False
+sp.trace=True
 
 
 
