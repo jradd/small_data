@@ -7,15 +7,15 @@ import json
 
 client_id = os.environ['CLIENT_ID']
 client_secret = os.environ['CLIENT_SECRET']
-redirect_uri = os.environ['REDIRECT_URI']
+redirect_uri = os.environ['CLIENT_REDIRECT']
 uri = 'spotify:track:3j1fOrxmfuym91Cf9v397b'
 
 
-title = sys.argv[1]
-artist = sys.argv[2]
+#title = sys.argv[1]
+#artist = sys.argv[2]
 client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-sp.trace=False
+sp.trace=True
 
 
 
@@ -63,11 +63,14 @@ class ExtractValues:
         return arr
 
 if __name__ == '__main__':
-  artist, title = sys.argv[1], sys.argv[2]
-  uri = get_id(artist, title)
-  analysis = get_analysis(uri)
-  filename = artist + '_' + title + '.json'
-  with open(filename, 'wb+') as f:
-    f.write(json.dumps(analysis))
-    data_read = f.read()
-    f.close()
+    artist, title = sys.argv[1], sys.argv[2]
+    uri = get_id(artist, title)
+#    uri = 'spotify:track:1UcsVXabDRUNnSUl65zdBT'
+#    artist='beethoven'
+#    title='nocm5'
+    filename = artist + '_' + title + '.json'
+    analysis = get_analysis(uri)
+    with open(filename, 'w') as f:
+      f.write(json.dumps(analysis))
+      data_read = f.read()
+      f.close()

@@ -12,7 +12,7 @@ from matplotlib import colors as mcolors
 import numpy as np
 import matplotlib as mlab
 import json
-import os
+import os, sys
 import pickle
 
 
@@ -112,7 +112,10 @@ if __name__ == '__main__':
 
 
 #  xs = np.linspace(
-  filename = 'tt_dram.json'
+  if len(sys.argv) < 1:
+    filename = 'Tangerine Dream_Sensing Elements.json'
+  filename = sys.argv[1]
+
   data_str = open(filename, 'r').read()
   data = json.loads(data_str)
 
@@ -158,9 +161,9 @@ if __name__ == '__main__':
            'blue':  [(0.0,  0.0, 0.0),
                      (0.5,  0.0, 0.0),
                      (1.0,  1.0, 1.0)]}
-  r = [i for i in range(0, len(xlist))]
-  plt.plot(xlist, x, xlist2, y)
-  plt.show()
+#  r = [i for i in range(0, len(xlist))]
+plt.plot(xlist, x, xlist2, y)
+plt.show()
 #  fig.colorbar(pos, ax=ax1)
 #  neg = ax2.imshow(Zneg, cmap='Reds_r', interpolation='none')
 #  fig.colorbar(neg, ax=ax2)
@@ -181,3 +184,15 @@ if __name__ == '__main__':
 #  plt.plot(xlist, x, 'ro')
 #  plt.axis([0,300,0, 300])
 #  plt.show()
+#  use 3d plot for audio features
+#
+#fig = plt.figure()
+#ax = Axes3D(fig)
+#X = np.arange(0, 12, 0.25)
+#Y = np.arange(0, 12, 0.25)
+#X, Y = np.meshgrid(X, Y)
+#R = np.sqrt(X**2 + Y**2)
+#Z = np.sin(R)
+#
+#ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap='hot')
+#plt.show()
