@@ -17,6 +17,4 @@ python3 <json>
 
 
 
-![beethoven](beethoven)
-
-[beethoven]: https://github.com/jradd/small_data/blob/master/beethoven_cm5.png
+!["beethoven"](https://raw.githubusercontent.com/jradd/small_data/master/beethoven_cm5.png)
