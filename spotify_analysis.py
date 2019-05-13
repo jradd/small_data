@@ -7,13 +7,8 @@ import json
 
 client_id = os.environ['CLIENT_ID']
 client_secret = os.environ['CLIENT_SECRET']
-<<<<<<< HEAD
-redirect_uri = os.environ['CLIENT_REDIRECT']
 uri = 'spotify:track:3j1fOrxmfuym91Cf9v397b'
-=======
 redirect_uri = os.environ['REDIRECT_URI']
-#uri = 'spotify:track:3j1fOrxmfuym91Cf9v397b'
->>>>>>> c8ef089bb5628d6b0355eadaeab6add3e1ba5fef
 
 
 #title = sys.argv[1]
@@ -77,5 +72,5 @@ if __name__ == '__main__':
     analysis = get_analysis(uri)
     with open(filename, 'w') as f:
       f.write(json.dumps(analysis))
-      data_read = f.read()
-      f.close()
+      #data_read = f.read()
+      #f.close()
